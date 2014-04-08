@@ -12,20 +12,34 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
    TextView textLat;
    TextView textLong;
+   
 	private static final int REQUEST_CODE = 3034;
-
+	private Button EdProfile;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
         login();
+	EdProfile=(Button)  findViewById(R.id.EditProfile);
 		
-
+		EdProfile.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				setContentView(R.layout.activity_edit_profile);
+				
+				
+			}
+		});
+		
 	}
 	public void login()
 	{

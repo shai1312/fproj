@@ -50,4 +50,12 @@
         android:text=""
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
+    <Button
+        android:id="@+id/EditProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_below="@+id/textLong"
+        android:text="Edit Profile" />
+
 </RelativeLayout>
