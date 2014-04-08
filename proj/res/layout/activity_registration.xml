@@ -74,15 +74,6 @@
         android:ems="10"
         android:inputType="textPersonName" />
 
-    <TextView
-        android:id="@+id/PasswordTag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/LastNameTag"
-        android:layout_centerVertical="true"
-        android:text="Password"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
     <EditText
         android:id="@+id/PasswordText"
         android:layout_width="wrap_content"
@@ -101,5 +92,15 @@
         android:layout_marginBottom="39dp"
         android:layout_toRightOf="@+id/FirstNameTag"
         android:text="Registration" />
+
+    <TextView
+        android:id="@+id/PasswordTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/LastNameTag"
+        android:layout_below="@+id/UserNameText"
+        android:layout_marginTop="62dp"
+        android:text="Password"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

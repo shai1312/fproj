@@ -10,6 +10,11 @@ import java.net.URL;
 
 
 
+
+import com.example.proj.MainActivity.mylocationlistener;
+
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -20,6 +25,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 
@@ -47,7 +53,9 @@ private TextView error;
 				startActivityForResult(intent, REQUEST_CODE);     
                
          }
+			
          });
+         
 		login.setOnClickListener(new View.OnClickListener() {
 		boolean checksucsses=false;	
 			public void onClick(View arg0) {
@@ -65,7 +73,7 @@ private TextView error;
 					  	error.setText("check1");
 						error.setText("beach");
 						Intent data=new Intent();
-						data.putExtra("user", user.getText());
+						data.putExtra("user", user.getText().toString());
 						setResult(RESULT_OK, data);	
 						finish();
 					}
@@ -121,4 +129,16 @@ private TextView error;
 		return super.onOptionsItemSelected(item);
 	}
 */
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		switch (requestCode) {
+			case REQUEST_CODE:
+				if(resultCode == RESULT_OK) {
+					setResult(RESULT_OK, data);	
+					finish();
+					
+				}
+		}
+	}
+
 }

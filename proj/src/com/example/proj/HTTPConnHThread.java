@@ -62,7 +62,7 @@ public class HTTPConnHThread extends HandlerThread {
 		catch (IOException e) {
 			Log.i(name, "IOException1");
 		}
-		notify();
+		
 	}
 
 	// Getters and Setters
