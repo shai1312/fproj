@@ -41,6 +41,14 @@
             android:name="com.example.proj.EditProfile"
             android:label="@string/title_activity_edit_profile" >
         </activity>
+        <activity
+            android:name="com.example.proj.BuyActivity"
+            android:label="@string/title_activity_buy" >
+        </activity>
+        <activity
+            android:name="com.example.proj.SaleActivity"
+            android:label="@string/title_activity_sale" >
+        </activity>
     </application>
 
 </manifest>

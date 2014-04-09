@@ -8,22 +8,30 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".EditProfile" >
 
-    <Button
-        android:id="@+id/Buy"
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:id="@+id/buy_sale_select"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="65dp"
-        android:text="Buy" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="64dp"
+        android:orientation="horizontal" >
 
-    <Button
-        android:id="@+id/Sale"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/Buy"
-        android:layout_alignBottom="@+id/Buy"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="63dp"
-        android:text="Sale" />
+        <RadioButton
+            android:id="@+id/buy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="19dp"
+            android:checked="true"
+            android:text="Buy" />
+
+        <RadioButton
+            android:id="@+id/sale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="74dp"
+            android:text="Sale" />
+    </RadioGroup>
 
 </RelativeLayout>

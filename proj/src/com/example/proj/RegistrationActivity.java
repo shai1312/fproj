@@ -23,15 +23,15 @@ EditText textLastName;
 		setContentView(R.layout.activity_registration);
 		textUserName=(EditText) findViewById(R.id.UserNameText);
 		textPassword=(EditText) findViewById(R.id.PasswordText);
-<<<<<<< HEAD
+
 		textFirstName=(EditText) findViewById(R.id.FirstNameText);
 		textLastName=(EditText) findViewById(R.id.LastNameText);
 
 	
-=======
+
 		 textFirstName=(EditText) findViewById(R.id.FirstNameText);
 		 textLastName=(EditText) findViewById(R.id.LastNameText);
->>>>>>> 8902c5508a05d9da919892f0e1b0120a81d72f8e
+
      RegistrationButton();
 	}
 	private void RegistrationButton() {
@@ -65,7 +65,7 @@ EditText textLastName;
 					{
 					
 						try {
-							url = new URL("http://192.168.1.12/registrate.php?UserName="+textUserName.getText().toString()+"&Password="+textPassword.getText().toString()+"&FirstName="+textFirstName.getText().toString()+"&LastName="+textUserName.getText().toString());
+							url = new URL("http://10.0.0.13/registrate.php?UserName="+textUserName.getText().toString()+"&Password="+textPassword.getText().toString()+"&FirstName="+textFirstName.getText().toString()+"&LastName="+textUserName.getText().toString());
 							HTTPConnHThread threadRegis= new HTTPConnHThread("registrate");	
 							threadRegis.setUrl(url);
 							threadRegis.start();	
