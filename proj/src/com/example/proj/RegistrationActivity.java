@@ -60,6 +60,7 @@ EditText textLastName;
 				
 				try {
 					boolean checksucsses=true;
+					//url = new URL("http://10.0.0.13/login.php?UserName="+textUserName.getText().toString()+"&Passward="+ textPassword.getText().toString());
 					url = new URL("http://192.168.1.12/login.php?UserName="+textUserName.getText().toString()+"&Passward="+ textPassword.getText().toString());
 					HTTPConnHThread thread= new HTTPConnHThread("checkExist");	
 					thread.setUrl(url);
@@ -73,7 +74,8 @@ EditText textLastName;
 					{
 					
 						try {
-							url = new URL("http://10.0.0.13/registrate.php?UserName="+textUserName.getText().toString()+"&Password="+textPassword.getText().toString()+"&FirstName="+textFirstName.getText().toString()+"&LastName="+textUserName.getText().toString());
+							//url = new URL("http://10.0.0.13/registrate.php?UserName="+textUserName.getText().toString()+"&Password="+textPassword.getText().toString()+"&FirstName="+textFirstName.getText().toString()+"&LastName="+textUserName.getText().toString());
+							url = new URL("http://192.168.1.12/registrate.php?UserName="+textUserName.getText().toString()+"&Password="+textPassword.getText().toString()+"&FirstName="+textFirstName.getText().toString()+"&LastName="+textUserName.getText().toString());
 							HTTPConnHThread threadRegis= new HTTPConnHThread("registrate");	
 							threadRegis.setUrl(url);
 							threadRegis.start();	

@@ -111,7 +111,8 @@ public class MainActivity extends Activity {
                textLong.setText(Double.toString(pLong));
                URL url;
 				try {
-					url = new URL("http://10.0.0.13/insert.php?lat="+Double.toString(pLat)+"&lon="+Double.toString(pLong)+"&id="+MainActivity.this.username+"&car="+car+"&tv="+tv+"&phone="+phone);
+					url = new URL("http://192.168.1.12/insert.php?lat="+Double.toString(pLat)+"&lon="+Double.toString(pLong)+"&id="+MainActivity.this.username+"&car="+car+"&tv="+tv+"&phone="+phone);
+					//url = new URL("http://10.0.0.13/insert.php?lat="+Double.toString(pLat)+"&lon="+Double.toString(pLong)+"&id="+MainActivity.this.username+"&car="+car+"&tv="+tv+"&phone="+phone);
 					HTTPConnHThread thread = new HTTPConnHThread("refresh");
 					thread.setUrl(url);
 					thread.start();

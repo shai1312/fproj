@@ -19,7 +19,7 @@ public class EditProfile extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_profile);
-		catagory=(ExpandableListView) findViewById(R.id.catagory);
+		//catagory=(ExpandableListView) findViewById(R.id.catagory);
         choose=(RadioGroup) findViewById(R.id.buy_sale_select);
        
 	}
