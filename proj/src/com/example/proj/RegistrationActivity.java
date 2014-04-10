@@ -23,15 +23,11 @@ EditText textLastName;
 		setContentView(R.layout.activity_registration);
 		textUserName=(EditText) findViewById(R.id.UserNameText);
 		textPassword=(EditText) findViewById(R.id.PasswordText);
-<<<<<<< HEAD
 		textFirstName=(EditText) findViewById(R.id.FirstNameText);
 		textLastName=(EditText) findViewById(R.id.LastNameText);
 
-	
-=======
-		 textFirstName=(EditText) findViewById(R.id.FirstNameText);
+			 textFirstName=(EditText) findViewById(R.id.FirstNameText);
 		 textLastName=(EditText) findViewById(R.id.LastNameText);
->>>>>>> 8902c5508a05d9da919892f0e1b0120a81d72f8e
      RegistrationButton();
 	}
 	private void RegistrationButton() {
