@@ -61,7 +61,7 @@ private TextView error;
 			public void onClick(View arg0) {
 				URL url;
 				try {
-					url = new URL("http://192.168.1.12/login.php?user="+user.getText().toString()+"&pass="+password.getText().toString());
+					url = new URL("http://10.0.0.13/login.php?user="+user.getText().toString()+"&pass="+password.getText().toString());
 					HTTPConnHThread thread = new HTTPConnHThread("Login");
 					thread.setUrl(url);
 					thread.start();
@@ -70,9 +70,9 @@ private TextView error;
 					this.checksucsses=thread.check;		
 					if(this.checksucsses)
 					{
-					  	error.setText("check1");
-						error.setText("beach");
+					 
 						Intent data=new Intent();
+						
 						data.putExtra("user", user.getText().toString());
 						setResult(RESULT_OK, data);	
 						finish();
