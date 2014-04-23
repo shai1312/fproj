@@ -24,14 +24,79 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="19dp"
             android:checked="true"
-            android:text="Buy" />
+            android:text="buy" />
 
         <RadioButton
             android:id="@+id/sale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="74dp"
-            android:text="Sale" />
+            android:text="sale" />
     </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/textView1"
+        android:layout_marginBottom="84dp"
+        android:text="TV"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/toggleButCAR"
+        android:layout_alignBottom="@+id/toggleButCAR"
+        android:layout_alignLeft="@+id/buy_sale_select"
+        android:layout_marginLeft="16dp"
+        android:text="Car"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignTop="@+id/toggleButtonPHONE"
+        android:text="Phone"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ToggleButton
+        android:id="@+id/toggleButtonTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/toggleButCAR"
+        android:layout_below="@+id/toggleButtonPHONE"
+        android:text="@string/togglebutton" />
+
+    <ToggleButton
+        android:id="@+id/toggleButCAR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/buy_sale_select"
+        android:layout_below="@+id/buy_sale_select"
+        android:layout_marginRight="49dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/togglebutton" />
+
+    <ToggleButton
+        android:id="@+id/toggleButtonPHONE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView3"
+        android:layout_alignLeft="@+id/toggleButtonTV"
+        android:layout_marginBottom="33dp"
+        android:text="@string/togglebutton" />
+
+    <Button
+        android:id="@+id/finish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/toggleButtonTV"
+        android:text="finish" />
 
 </RelativeLayout>

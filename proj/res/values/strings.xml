@@ -9,5 +9,8 @@
     <string name="title_activity_edit_profile">EditProfile</string>
     <string name="title_activity_buy">BuyActivity</string>
     <string name="title_activity_sale">SaleActivity</string>
+    <string name="buy">Buy</string>
+    <string name="togglebutton">ToggleButton</string>
+    <string name="sale">Sale</string>
 
 </resources>
