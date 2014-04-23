@@ -18,6 +18,7 @@ public class HTTPConnHThread extends HandlerThread {
 	private String lat, lng;
 	private String name;
     private URL url;
+    private String data="";
     public boolean check=false;
 	public HTTPConnHThread(String name) {
 		super(name);
@@ -43,7 +44,8 @@ public class HTTPConnHThread extends HandlerThread {
 				if (result.startsWith("OK")) { // Something is wrong
 					Log.i(name, "OK!");
 					check=true;
-				   	
+					data=result;
+
 				}
 				else { // Data sent
 					Log.i(name, "Not OK!");
@@ -79,5 +81,9 @@ public class HTTPConnHThread extends HandlerThread {
   public boolean getcheck()
   {
 	  return this.check;
+  }
+  public String getdata()
+  {
+	  return this.data;
   }
 }

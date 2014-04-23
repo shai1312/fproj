@@ -23,19 +23,6 @@ EditText textLastName;
 		setContentView(R.layout.activity_registration);
 		textUserName=(EditText) findViewById(R.id.UserNameText);
 		textPassword=(EditText) findViewById(R.id.PasswordText);
-		textFirstName=(EditText) findViewById(R.id.FirstNameText);
-		textLastName=(EditText) findViewById(R.id.LastNameText);
-
-			 textFirstName=(EditText) findViewById(R.id.FirstNameText);
-		 textLastName=(EditText) findViewById(R.id.LastNameText);
-
-		textFirstName=(EditText) findViewById(R.id.FirstNameText);
-		textLastName=(EditText) findViewById(R.id.LastNameText);
-
-	
-
-		 textFirstName=(EditText) findViewById(R.id.FirstNameText);
-		 textLastName=(EditText) findViewById(R.id.LastNameText);
 
      RegistrationButton();
 	}

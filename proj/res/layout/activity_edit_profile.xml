@@ -8,30 +8,68 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".EditProfile" >
 
-    <RadioGroup
-        android:id="@+id/buy_sale_select"
-        android:layout_width="match_parent"
+    <CheckBox
+        android:id="@+id/SaleCar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/BuyCar"
+        android:layout_alignBottom="@+id/BuyCar"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:text="SaleCar" />
+
+    <CheckBox
+        android:id="@+id/BuyPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/BuyCar"
+        android:layout_below="@+id/BuyCar"
+        android:layout_marginTop="48dp"
+        android:text="BuyPhone" />
+
+    <CheckBox
+        android:id="@+id/BuyCar"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="64dp"
-        android:orientation="horizontal" >
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="40dp"
+        android:text="BuyCar" />
 
-        <RadioButton
-            android:id="@+id/buy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="19dp"
-            android:checked="true"
-            android:text="Buy" />
+    <CheckBox
+        android:id="@+id/SalePhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/BuyPhone"
+        android:layout_alignRight="@+id/SaleCar"
+        android:text="SalePhone" />
 
-        <RadioButton
-            android:id="@+id/sale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="74dp"
-            android:text="Sale" />
-    </RadioGroup>
+    <CheckBox
+        android:id="@+id/BuyTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/BuyPhone"
+        android:layout_below="@+id/BuyPhone"
+        android:layout_marginTop="80dp"
+        android:text="BuyTv" />
+
+    <CheckBox
+        android:id="@+id/SaleTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/BuyTv"
+        android:layout_alignBottom="@+id/BuyTv"
+        android:layout_alignLeft="@+id/SaleCar"
+        android:text="SaleTv" />
+
+    <Button
+        android:id="@+id/Done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="55dp"
+        android:layout_toLeftOf="@+id/SaleTv"
+        android:text="Done" />
 
 </RelativeLayout>
