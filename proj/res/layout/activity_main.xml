@@ -58,4 +58,13 @@
         android:layout_below="@+id/textLong"
         android:text="Edit Profile" />
 
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/EditProfile"
+        android:layout_marginTop="42dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
 </RelativeLayout>

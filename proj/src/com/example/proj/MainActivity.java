@@ -23,6 +23,7 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
    TextView textLat;
    TextView textLong;
+   TextView result;
    private String car,phone,tv;
    private String username,Fname,Lname,PhoneNum;
 	private static final int REQUEST_CODE_LOGIN = 3034;
@@ -78,7 +79,7 @@ public class MainActivity extends Activity {
 					this.phone=st.nextToken();
 					this.car=st.nextToken();
 					this.tv=st.nextToken();
-				  	
+				  	this.result=(TextView) findViewById(R.id.result);
 					
 				}
 				break;
@@ -157,8 +158,8 @@ public class MainActivity extends Activity {
 						
 					}
 					
-					Toast.makeText(MainActivity.this,ack, Toast.LENGTH_LONG).show();
-					
+					//Toast.makeText(MainActivity.this,ack, Toast.LENGTH_LONG).show();
+					result.setText(ack);
 				}
 				catch(Exception ex)
 				{
