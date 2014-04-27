@@ -20,7 +20,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
-        android:id="@+id/FirstNameText"
+        android:id="@+id/DistanceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/FirstNameTag"
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/FirstNameTag"
-        android:layout_below="@+id/FirstNameText"
+        android:layout_below="@+id/DistanceText"
         android:layout_marginTop="22dp"
         android:text="LastName"
         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/LastNameTag"
         android:layout_alignBottom="@+id/LastNameTag"
-        android:layout_alignLeft="@+id/FirstNameText"
+        android:layout_alignLeft="@+id/DistanceText"
         android:layout_alignParentRight="true"
         android:ems="10"
         android:inputType="textPersonName" />
@@ -101,5 +101,25 @@
         android:layout_marginBottom="39dp"
         android:layout_toRightOf="@+id/FirstNameTag"
         android:text="Registration" />
+
+    <TextView
+        android:id="@+id/PhoneNumberTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/PasswordText"
+        android:layout_marginTop="19dp"
+        android:layout_toLeftOf="@+id/PhoneNumText"
+        android:text="Phone Number"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/PhoneNumText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/PhoneNumberTag"
+        android:layout_toRightOf="@+id/UserNameTagR"
+        android:ems="10"
+        android:inputType="textPersonName" />
 
 </RelativeLayout>

@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -19,7 +20,7 @@ public class EditProfile extends Activity {
 	private RadioGroup choose;
 	private ToggleButton carb,tvb,phoneb,cars,tvs,phones;
 	private Button finish;
-   
+    private EditText distance;
 	private String car,tv,phone;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,7 @@ public class EditProfile extends Activity {
        tv=getIntent().getStringExtra("tv");
        car=getIntent().getStringExtra("car");
        phone=getIntent().getStringExtra("phone");
-
+       distance=(EditText) findViewById(R.id.DistanceText);
       
       
        if(tv.equals("btv"))
@@ -108,6 +109,10 @@ public class EditProfile extends Activity {
  				else
  				{
  					data.putExtra("phone","phone");
+ 				}
+ 				if(distance.getText().toString().length()!=0)
+ 				{
+ 					data.putExtra("distance", distance.getText().toString());
  				}
 				setResult(RESULT_OK, data);	
 				

@@ -28,7 +28,7 @@
         android:text="finish" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/PhoneNumberTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/toggleCarB"
@@ -67,7 +67,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignLeft="@+id/PhoneNumberTag"
         android:layout_below="@+id/toggleCarB"
         android:layout_marginTop="20dp"
         android:text="Phone"
@@ -127,5 +127,25 @@
         android:layout_alignBottom="@+id/toggleTvB"
         android:layout_alignLeft="@+id/TogglePhones"
         android:text="@string/togglebutton" />
+
+    <EditText
+        android:id="@+id/DistanceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/DistanceTag"
+        android:layout_toRightOf="@+id/textView4"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/DistanceTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/finish"
+        android:layout_alignRight="@+id/textView2"
+        android:layout_marginBottom="20dp"
+        android:text="distance"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>
