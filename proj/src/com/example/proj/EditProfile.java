@@ -14,71 +14,66 @@ import android.widget.ToggleButton;
 
 public class EditProfile extends Activity {
 	private static final int REQUEST_CODE = 3035;
-<<<<<<< HEAD
 	private Boolean buy=true,sale=false;
 	private ExpandableListView catagory;
 	private RadioGroup choose;
-	private ToggleButton car;
+	private ToggleButton carb,tvb,phoneb,cars,tvs,phones;
 	private Button finish;
-=======
-    private CheckBox bcar,scar,btv,stv,bphone,sphone;
+   
 	private String car,tv,phone;
-	private Button Done;
->>>>>>> 72fcb8a9350168d3aebe7188d415da9a231a40a7
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_profile);
 		//catagory=(ExpandableListView) findViewById(R.id.catagory);
-<<<<<<< HEAD
         choose=(RadioGroup) findViewById(R.id.buy_sale_select);
-        car = (ToggleButton) findViewById(R.id.);
-        finish=(Button) findViewById(R.id.) 
-	}
-=======
+        carb = (ToggleButton) findViewById(R.id.toggleCarB);
+        cars = (ToggleButton) findViewById(R.id.ToggleCarS);
+        tvb=(ToggleButton) findViewById(R.id.toggleTvB);
+        tvs=(ToggleButton) findViewById(R.id.ToggleTvS);
+        phoneb=(ToggleButton) findViewById(R.id.togglePhoneB);
+        phones=(ToggleButton) findViewById(R.id.TogglePhones);
+        finish=(Button) findViewById(R.id.finish); 
        tv=getIntent().getStringExtra("tv");
        car=getIntent().getStringExtra("car");
        phone=getIntent().getStringExtra("phone");
-       bcar=(CheckBox) findViewById(R.id.BuyCar);
-       scar=(CheckBox) findViewById(R.id.SaleCar);
-       btv=(CheckBox) findViewById(R.id.BuyTv);
-       stv=(CheckBox) findViewById(R.id.SaleTv);
-       bphone=(CheckBox) findViewById(R.id.BuyPhone);
-       sphone=(CheckBox) findViewById(R.id.SalePhone);
-       Done=(Button) findViewById(R.id.Done);
-       if(tv=="btv")
+
+      
+      
+       if(tv.equals("btv"))
        {
-    	 btv.setChecked(true);
+    	tvb.setChecked(true);
+    	
        }
-       else if(tv=="stv")
+       else if(tv.equals("stv"))
        {
-    	  stv.setChecked(true); 
+    	  tvs.setChecked(true); 
        }
-       if(car=="bcar")
+       if(car.equals("bcar"))
        {
-    	 bcar.setChecked(true);
+    	 carb.setChecked(true);
        }
-       else if(car=="scar")
+       else if(car.equals("scar"))
        {
-    	  scar.setChecked(true); 
+    	  cars.setChecked(true); 
        }
-       if(phone=="bphone")
+       if(phone.equals("bphone"))
        {
-    	 bphone.setChecked(true);
+    	 phoneb.setChecked(true);
        }
-       else if(phone=="sphone")
+       else if(phone.equals("sphone"))
        {
-    	  sphone.setChecked(true); 
+    	  phones.setChecked(true); 
        }
        
-         Done.setOnClickListener(new View.OnClickListener() {
+       finish.setOnClickListener(new View.OnClickListener() {
  			public void onClick(View arg0) {
  				Intent data=new Intent();
- 				if(bcar.isChecked())
+ 				if(carb.isChecked())
  				{
  					data.putExtra("car", "bcar");
  				}
- 				else if(scar.isChecked())
+ 				else if(cars.isChecked())
  				{
  					data.putExtra("car", "scar");
  				}
@@ -88,11 +83,11 @@ public class EditProfile extends Activity {
  				}
  				
  				//=====================================
- 				if(btv.isChecked())
+ 				if(tvb.isChecked())
  				{
  					data.putExtra("tv", "btv");
  				}
- 				else if(stv.isChecked())
+ 				else if(tvs.isChecked())
  				{
  					data.putExtra("tv","stv");
  				}
@@ -102,11 +97,11 @@ public class EditProfile extends Activity {
  				}
  				
  				//=====================================
- 				if(bphone.isChecked())
+ 				if(phoneb.isChecked())
  				{
  					data.putExtra("phone", "bphone");
  				}
- 				else if(sphone.isChecked())
+ 				else if(phones.isChecked())
  				{
  					data.putExtra("phone","sphone");
  				}
@@ -120,13 +115,9 @@ public class EditProfile extends Activity {
  			}
          });
          }
->>>>>>> 72fcb8a9350168d3aebe7188d415da9a231a40a7
+
 	
-	private void ToggleButCar() {
-		
-		
-		ToggleBtCar.on
-		
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
