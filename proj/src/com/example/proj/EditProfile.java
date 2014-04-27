@@ -114,6 +114,10 @@ public class EditProfile extends Activity {
  				{
  					data.putExtra("distance", distance.getText().toString());
  				}
+ 				else
+ 				{
+ 					data.putExtra("distance",getIntent().getStringExtra("distance"));
+ 				}
 				setResult(RESULT_OK, data);	
 				
 				finish();

@@ -62,7 +62,7 @@ private TextView error;
 				URL url;
 				try {
 					//url = new URL("http://192.168.1.12/login.php?user="+user.getText().toString()+"&pass="+password.getText().toString());
-					url = new URL("http://10.0.0.13/login.php?user="+user.getText().toString()+"&pass="+password.getText().toString());
+					url = new URL("http://192.168.1.15/login.php?user="+user.getText().toString()+"&pass="+password.getText().toString());
 					HTTPConnHThread thread = new HTTPConnHThread("Login");
 					thread.setUrl(url);
 					thread.start();

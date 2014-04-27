@@ -4,7 +4,9 @@ package com.example.proj;
 
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.StringTokenizer;
+
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -48,6 +50,7 @@ public class MainActivity extends Activity {
 				intent.putExtra("car", car);
 				intent.putExtra("tv", tv);
 				intent.putExtra("phone", phone);
+				intent.putExtra("distance", distance);
 				startActivityForResult(intent, REQUEST_CODE_EDIT);     
 
 				
@@ -92,8 +95,8 @@ public class MainActivity extends Activity {
 				car=data.getStringExtra("car");
 				tv=data.getStringExtra("tv");
 				phone=data.getStringExtra("phone");
-				this.distance=Double.valueOf("current distnance limit: "+data.getStringExtra("distance"));
-				 DistanceText.setText(Double.toString(distance));
+				this.distance=Double.valueOf(data.getStringExtra("distance"));
+				 DistanceText.setText("current distnance limit: "+Double.toString(distance));
 				break;
 				}
 		}
@@ -107,15 +110,16 @@ public class MainActivity extends Activity {
 			 
         	   double pLong= location.getLongitude();
         	   double pLat = location.getLatitude();
-               double maxpLong=pLong+distance*0.000009,minpLong=pLong-distance*0.000009,maxpLat=pLat+distance*0.000009,minpLat=pLat-distance*0.000009;
-               
+              double maxpLong=pLong+distance*0.000009,minpLong=pLong-distance*0.000009,maxpLat=pLat+distance*0.000009,minpLat=pLat-distance*0.000009;
+
+        	   DecimalFormat df = new DecimalFormat("#.######");
                textLat.setText(Double.toString(pLat));
                textLong.setText(Double.toString(pLong));
                DistanceText.setText(Double.toString(distance));
                URL url;
 				try {
 				//  url = new URL("http://10.0.0.13/insert.php?lat="+Double.toString(pLat)+"&lon="+Double.toString(pLong)+"&id="+MainActivity.this.username+"&car="+car+"&tv="+tv+"&phone="+phone+"&maxpLat="+Double.toString(maxpLat)+"&minpLat="+Double.toString(minpLat)+"&maxpLong="+Double.toString(maxpLong)+"&minPlong="+Double.toString(minpLong));
-					url = new URL("http://10.0.0.13/insert.php?lat="+Double.toString(pLat)+"&lon="+Double.toString(pLong)+"&id="+MainActivity.this.username+"&car="+car+"&tv="+tv+"&phone="+phone+"&maxpLat="+Double.toString(maxpLat)+"&minpLat="+Double.toString(minpLat)+"&maxpLong="+Double.toString(maxpLong)+"&minpLong="+Double.toString(minpLong)+"&distance="+Double.toString(MainActivity.this.distance));
+					url = new URL("http://192.168.1.15/insert.php?lat="+Double.toString(pLat)+"&lon="+Double.toString(pLong)+"&id="+MainActivity.this.username+"&car="+car+"&tv="+tv+"&phone="+phone+"&maxpLat="+df.format(maxpLat)+"&minpLat="+df.format(minpLat)+"&maxpLong="+df.format(maxpLong)+"&minpLong="+df.format(minpLong)+"&distance="+Double.toString(MainActivity.this.distance));
 					HTTPConnHThread thread = new HTTPConnHThread("refresh");
 					thread.setUrl(url);
 					thread.start();
