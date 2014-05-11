@@ -14,28 +14,28 @@ import android.widget.ToggleButton;
 
 public class EditProfile extends Activity {
 	private static final int REQUEST_CODE = 3035;
-<<<<<<< HEAD
+
 	private Boolean buy=true,sale=false;
 	private ExpandableListView catagory;
 	private RadioGroup choose;
 	private ToggleButton car;
 	private Button finish;
-=======
+
     private CheckBox bcar,scar,btv,stv,bphone,sphone;
 	private String car,tv,phone;
 	private Button Done;
->>>>>>> 72fcb8a9350168d3aebe7188d415da9a231a40a7
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_profile);
 		//catagory=(ExpandableListView) findViewById(R.id.catagory);
-<<<<<<< HEAD
+
         choose=(RadioGroup) findViewById(R.id.buy_sale_select);
         car = (ToggleButton) findViewById(R.id.);
         finish=(Button) findViewById(R.id.) 
 	}
-=======
+
        tv=getIntent().getStringExtra("tv");
        car=getIntent().getStringExtra("car");
        phone=getIntent().getStringExtra("phone");
@@ -120,7 +120,7 @@ public class EditProfile extends Activity {
  			}
          });
          }
->>>>>>> 72fcb8a9350168d3aebe7188d415da9a231a40a7
+
 	
 	private void ToggleButCar() {
 		
