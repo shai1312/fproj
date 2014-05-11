@@ -4,6 +4,7 @@ package com.example.proj;
 
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.StringTokenizer;
 
 import android.location.Location;
@@ -23,11 +24,14 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
    TextView textLat;
    TextView textLong;
+   TextView result;
+   Double distance;
    private String car,phone,tv;
    private String username,Fname,Lname,PhoneNum;
 	private static final int REQUEST_CODE_LOGIN = 3034;
 	private static final int REQUEST_CODE_EDIT=3035;
 	private Button EdProfile;
+	private TextView DistanceText;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +45,12 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				setContentView(R.layout.activity_edit_profile);
+			//	setContentView(R.layout.activity_edit_profile);
 				Intent intent = new Intent(getApplicationContext(), EditProfile.class);
 				intent.putExtra("car", car);
 				intent.putExtra("tv", tv);
 				intent.putExtra("phone", phone);
+				intent.putExtra("distance", distance);
 				startActivityForResult(intent, REQUEST_CODE_EDIT);     
 
 				
@@ -78,8 +83,10 @@ public class MainActivity extends Activity {
 					this.phone=st.nextToken();
 					this.car=st.nextToken();
 					this.tv=st.nextToken();
-				  	
-					
+				  	this.distance=Double.valueOf(st.nextToken());
+					this.result=(TextView) findViewById(R.id.result);
+					this.DistanceText=(TextView) findViewById(R.id.DistnaceLimit);
+					 DistanceText.setText("current distnance limit: "+Double.toString(distance));
 				}
 				break;
 			case REQUEST_CODE_EDIT:
@@ -88,6 +95,8 @@ public class MainActivity extends Activity {
 				car=data.getStringExtra("car");
 				tv=data.getStringExtra("tv");
 				phone=data.getStringExtra("phone");
+				this.distance=Double.valueOf(data.getStringExtra("distance"));
+				 DistanceText.setText("current distnance limit: "+Double.toString(distance));
 				break;
 				}
 		}
@@ -101,13 +110,16 @@ public class MainActivity extends Activity {
 			 
         	   double pLong= location.getLongitude();
         	   double pLat = location.getLatitude();
-               double maxpLong=pLong+0.000009,minpLong=pLong-0.000009,maxpLat=pLat-0.000009,minpLat=pLat-0.000009;
-        	   textLat.setText(Double.toString(pLat));
+              double maxpLong=pLong+distance*0.000009,minpLong=pLong-distance*0.000009,maxpLat=pLat+distance*0.000009,minpLat=pLat-distance*0.000009;
+
+        	   DecimalFormat df = new DecimalFormat("#.######");
+               textLat.setText(Double.toString(pLat));
                textLong.setText(Double.toString(pLong));
+               DistanceText.setText(Double.toString(distance));
                URL url;
 				try {
-					url = new URL("http://192.168.1.12/insert.php?lat="+Double.toString(pLat)+"&lon="+Double.toString(pLong)+"&id="+MainActivity.this.username+"&car="+car+"&tv="+tv+"&phone="+phone+"&maxpLat="+Double.toString(maxpLat)+"&minpLat="+Double.toString(minpLat)+"&maxpLong="+Double.toString(maxpLong)+"&minPlong="+Double.toString(minpLong));
-					//url = new URL("http://10.0.0.13/insert.php?lat="+Double.toString(pLat)+"&lon="+Double.toString(pLong)+"&id="+MainActivity.this.username+"&car="+car+"&tv="+tv+"&phone="+phone);
+				//  url = new URL("http://10.0.0.13/insert.php?lat="+Double.toString(pLat)+"&lon="+Double.toString(pLong)+"&id="+MainActivity.this.username+"&car="+car+"&tv="+tv+"&phone="+phone+"&maxpLat="+Double.toString(maxpLat)+"&minpLat="+Double.toString(minpLat)+"&maxpLong="+Double.toString(maxpLong)+"&minPlong="+Double.toString(minpLong));
+					url = new URL("http://192.168.1.15/insert.php?lat="+Double.toString(pLat)+"&lon="+Double.toString(pLong)+"&id="+MainActivity.this.username+"&car="+car+"&tv="+tv+"&phone="+phone+"&maxpLat="+df.format(maxpLat)+"&minpLat="+df.format(minpLat)+"&maxpLong="+df.format(maxpLong)+"&minpLong="+df.format(minpLong)+"&distance="+Double.toString(MainActivity.this.distance));
 					HTTPConnHThread thread = new HTTPConnHThread("refresh");
 					thread.setUrl(url);
 					thread.start();
@@ -122,6 +134,7 @@ public class MainActivity extends Activity {
 					ttv=MainActivity.this.tv;
 					tphone=MainActivity.this.phone;
 					String user,phonenum,car,tv,phone,ack="";
+					st.nextToken();
 					while(st.hasMoreTokens())
 					{
 						user=st.nextToken();
@@ -129,34 +142,35 @@ public class MainActivity extends Activity {
 						phone=st.nextToken();
 						car=st.nextToken();
 						tv=st.nextToken();
-						if(ttv=="btv"&&tv=="stv")
+						if(ttv.equals("btv")&&tv.equals("stv"))
 						{
-							ack=ack+user+phonenum+tv+"\0";
+							ack=ack+user+"\0"+phonenum+"\0"+tv+"\0"+"\n";
 						}
-						else if(ttv=="stv"&&tv=="btv")
+						else if(ttv.equals("stv")&&tv.equals("btv"))
 						{
-							ack=ack+user+phonenum+tv+"\0";
+							ack=ack+user+"\0"+phonenum+"\0"+tv+"\0"+"\n";
 						}
-						if(tcar=="bcar"&&car=="scar")
+						if(tcar.equals("bcar")&&car.equals("scar"))
 						{
-							ack=ack+user+phonenum+car+"\0";
+							ack=ack+user+"\0"+phonenum+"\0"+car+"\n";
 						}
-						else if(tcar=="scar"&&car=="bcar")
+						else if(tcar.equals("scar")&&car.equals("bcar"))
 						{
-							ack=ack+user+phonenum+car+"\0";
+							ack=ack+user+"\0"+phonenum+"\0"+car+"\0"+"\n";
 						}
-						if(ttv=="bphone"&&phone=="sphone")
+						if(ttv.equals("bphone")&&phone.equals("sphone"))
 						{
-							ack=ack+user+phonenum+phone+"\0";
+							ack=ack+user+"\0"+phonenum+" "+phone+"\0"+"\n";
 						}
-						else if(tphone=="phone"&&phone=="bphone")
+						else if(tphone.equals("sphone")&&phone.equals("bphone"))
 						{
-							ack=ack+user+phonenum+phone+"\0";
+							ack=ack+user+"\0"+phonenum+"\0"+phone+"\0"+"\n";
 						}
 						
 					}
-					Toast.makeText(MainActivity.this,ack, Toast.LENGTH_LONG).show();
 					
+					//Toast.makeText(MainActivity.this,ack, Toast.LENGTH_LONG).show();
+					result.setText(ack);
 				}
 				catch(Exception ex)
 				{

@@ -17,86 +17,135 @@
         android:layout_marginLeft="28dp"
         android:layout_marginTop="64dp"
         android:orientation="horizontal" >
-
-        <RadioButton
-            android:id="@+id/buy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="19dp"
-            android:checked="true"
-            android:text="buy" />
-
-        <RadioButton
-            android:id="@+id/sale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="74dp"
-            android:text="sale" />
     </RadioGroup>
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/textView1"
-        android:layout_marginBottom="84dp"
-        android:text="TV"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/toggleButCAR"
-        android:layout_alignBottom="@+id/toggleButCAR"
-        android:layout_alignLeft="@+id/buy_sale_select"
-        android:layout_marginLeft="16dp"
-        android:text="Car"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_alignTop="@+id/toggleButtonPHONE"
-        android:text="Phone"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <ToggleButton
-        android:id="@+id/toggleButtonTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/toggleButCAR"
-        android:layout_below="@+id/toggleButtonPHONE"
-        android:text="@string/togglebutton" />
-
-    <ToggleButton
-        android:id="@+id/toggleButCAR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/buy_sale_select"
-        android:layout_below="@+id/buy_sale_select"
-        android:layout_marginRight="49dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/togglebutton" />
-
-    <ToggleButton
-        android:id="@+id/toggleButtonPHONE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView3"
-        android:layout_alignLeft="@+id/toggleButtonTV"
-        android:layout_marginBottom="33dp"
-        android:text="@string/togglebutton" />
 
     <Button
         android:id="@+id/finish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/toggleButtonTV"
+        android:layout_toLeftOf="@+id/toggleTvB"
         android:text="finish" />
+
+    <TextView
+        android:id="@+id/PhoneNumberTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/toggleCarB"
+        android:layout_alignBottom="@+id/toggleCarB"
+        android:layout_alignLeft="@+id/buy_sale_select"
+        android:text="Car"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ToggleButton
+        android:id="@+id/toggleCarB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buy_sale_select"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="@string/togglebutton" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buy_sale_select"
+        android:layout_centerHorizontal="true"
+        android:text="buy" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/buy_sale_select"
+        android:layout_below="@+id/buy_sale_select"
+        android:layout_marginRight="34dp"
+        android:text="sale" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/PhoneNumberTag"
+        android:layout_below="@+id/toggleCarB"
+        android:layout_marginTop="20dp"
+        android:text="Phone"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ToggleButton
+        android:id="@+id/togglePhoneB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_toRightOf="@+id/finish"
+        android:text="@string/togglebutton" />
+
+    <ToggleButton
+        android:id="@+id/toggleTvB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView3"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_alignLeft="@+id/toggleCarB"
+        android:text="@string/togglebutton" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_below="@+id/togglePhoneB"
+        android:layout_marginTop="43dp"
+        android:text="TV"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ToggleButton
+        android:id="@+id/ToggleCarS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/toggleCarB"
+        android:layout_alignBottom="@+id/toggleCarB"
+        android:layout_alignRight="@+id/buy_sale_select"
+        android:text="@string/togglebutton" />
+
+    <ToggleButton
+        android:id="@+id/TogglePhones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/togglePhoneB"
+        android:layout_alignBottom="@+id/togglePhoneB"
+        android:layout_alignLeft="@+id/TextView01"
+        android:text="@string/togglebutton" />
+
+    <ToggleButton
+        android:id="@+id/ToggleTvS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/toggleTvB"
+        android:layout_alignBottom="@+id/toggleTvB"
+        android:layout_alignLeft="@+id/TogglePhones"
+        android:text="@string/togglebutton" />
+
+    <EditText
+        android:id="@+id/DistanceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/DistanceTag"
+        android:layout_toRightOf="@+id/textView4"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/DistanceTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/finish"
+        android:layout_alignRight="@+id/textView2"
+        android:layout_marginBottom="20dp"
+        android:text="distance"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

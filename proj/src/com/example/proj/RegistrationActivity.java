@@ -16,6 +16,7 @@ EditText textUserName;
 EditText textPassword;
 EditText textFirstName;
 EditText textLastName;
+EditText PhoneNum;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +24,9 @@ EditText textLastName;
 		setContentView(R.layout.activity_registration);
 		textUserName=(EditText) findViewById(R.id.UserNameText);
 		textPassword=(EditText) findViewById(R.id.PasswordText);
-
+        textFirstName=(EditText) findViewById(R.id.DistanceText);
+        textLastName=(EditText) findViewById(R.id.LastNameText);
+        PhoneNum=(EditText) findViewById(R.id.PhoneNumText);
      RegistrationButton();
 	}
 	private void RegistrationButton() {
@@ -37,15 +40,15 @@ EditText textLastName;
 				
 				
 				
-			if(textUserName.getText().toString().length()!=0&& textPassword.getText().toString().length()!=0 &&textFirstName.getText().toString().length()!=0 && textLastName.getText().toString().length()!=0)
+			if(textUserName.getText().toString().length()!=0&& textPassword.getText().toString().length()!=0 &&textFirstName.getText().toString().length()!=0 && textLastName.getText().toString().length()!=0 &&PhoneNum.getText().toString().length()!=0)
 			{
 				URL url;
 				
 				
 				try {
 					boolean checksucsses=true;
-					//url = new URL("http://10.0.0.13/login.php?UserName="+textUserName.getText().toString()+"&Passward="+ textPassword.getText().toString());
-					url = new URL("http://192.168.1.12/login.php?UserName="+textUserName.getText().toString()+"&Passward="+ textPassword.getText().toString());
+					url = new URL("http://192.168.1.15/login.php?UserName="+textUserName.getText().toString()+"&Passward="+ textPassword.getText().toString());
+					//url = new URL("http://192.168.1.12/login.php?UserName="+textUserName.getText().toString()+"&Passward="+ textPassword.getText().toString());
 					HTTPConnHThread thread= new HTTPConnHThread("checkExist");	
 					thread.setUrl(url);
 					thread.start();
@@ -58,8 +61,8 @@ EditText textLastName;
 					{
 					
 						try {
-							//url = new URL("http://10.0.0.13/registrate.php?UserName="+textUserName.getText().toString()+"&Password="+textPassword.getText().toString()+"&FirstName="+textFirstName.getText().toString()+"&LastName="+textUserName.getText().toString());
-							url = new URL("http://192.168.1.12/registrate.php?UserName="+textUserName.getText().toString()+"&Password="+textPassword.getText().toString()+"&FirstName="+textFirstName.getText().toString()+"&LastName="+textUserName.getText().toString());
+							url = new URL("http://192.168.1.15/registrate.php?UserName="+textUserName.getText().toString()+"&Password="+textPassword.getText().toString()+"&FirstName="+textFirstName.getText().toString()+"&LastName="+textLastName.getText().toString()+"&Phone="+PhoneNum.getText().toString());
+							//url = new URL("http://192.168.1.12/registrate.php?UserName="+textUserName.getText().toString()+"&Password="+textPassword.getText().toString()+"&FirstName="+textFirstName.getText().toString()+"&LastName="+textUserName.getText().toString());
 							HTTPConnHThread threadRegis= new HTTPConnHThread("registrate");	
 							threadRegis.setUrl(url);
 							threadRegis.start();	
@@ -69,7 +72,9 @@ EditText textLastName;
 							if(threadRegis.check)
 							{
 								Intent data=new Intent();
+								
 								data.putExtra("user",textUserName.getText().toString());
+								data.putExtra("info", "OK"+" "+textFirstName.getText().toString()+" "+textLastName.getText().toString()+" "+PhoneNum.getText().toString()+" "+"phone car tv 1");
 								setResult(RESULT_OK, data);	
 								finish();
 											
