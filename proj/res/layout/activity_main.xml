@@ -77,4 +77,24 @@
         android:layout_marginTop="14dp"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
+    <TextView
+        android:id="@+id/Accuracytag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/Accuracy"
+        android:layout_alignBottom="@+id/Accuracy"
+        android:layout_alignLeft="@+id/EditProfile"
+        android:text="Accuracy"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/Accuracy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/EditProfile"
+        android:layout_marginBottom="28dp"
+        android:layout_marginLeft="26dp"
+        android:layout_toRightOf="@+id/EditProfile"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
 </RelativeLayout>

@@ -41,10 +41,10 @@ public class HTTPConnHThread extends HandlerThread {
 				InputStream in = new BufferedInputStream(urlConnection.getInputStream());
 				BufferedReader br = new BufferedReader(new InputStreamReader(in));
 				String result = br.readLine();
-				if(result.equals("<br />"))
+				/*if(result.equals("<br />"))
 				{
 					result=br.readLine();
-				}
+				}*/
 				if (result.startsWith("OK")) { // Something is wrong
 					Log.i(name, "OK!");
 					check=true;

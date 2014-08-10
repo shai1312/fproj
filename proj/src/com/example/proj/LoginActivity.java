@@ -11,7 +11,9 @@ import java.net.URL;
 
 
 
+
 import com.example.proj.MainActivity.mylocationlistener;
+import com.parse.ParseObject;
 
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -62,7 +64,7 @@ private TextView error;
 				URL url;
 				try {
 					//url = new URL("http://192.168.1.12/login.php?user="+user.getText().toString()+"&pass="+password.getText().toString());
-					url = new URL("http://192.168.1.15/login.php?user="+user.getText().toString()+"&pass="+password.getText().toString());
+					url = new URL("http://10.0.0.13/login.php?user="+user.getText().toString()+"&pass="+password.getText().toString());
 					HTTPConnHThread thread = new HTTPConnHThread("Login");
 					thread.setUrl(url);
 					thread.start();

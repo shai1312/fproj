@@ -7,6 +7,7 @@ import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.StringTokenizer;
 
+import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -21,11 +22,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 public class MainActivity extends Activity {
    TextView textLat;
    TextView textLong;
-   TextView result;
+   TextView result,Accuracy;
    Double distance;
+   double pLong;
+   double pLat;
    private String car,phone,tv;
    private String username,Fname,Lname,PhoneNum;
 	private static final int REQUEST_CODE_LOGIN = 3034;
@@ -72,7 +76,9 @@ public class MainActivity extends Activity {
 					textLong=(TextView) findViewById(R.id.textLong);
 					LocationManager lm=(LocationManager) getSystemService (Context.LOCATION_SERVICE);
 					LocationListener ll= new mylocationlistener();
-					lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0,0, ll);
+					Accuracy=(TextView) findViewById(R.id.Accuracy);
+                     
+					lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5,10, ll);
 					this.username=data.getStringExtra("user");
 					String info=data.getStringExtra("info");
 					StringTokenizer st = new StringTokenizer(info);
@@ -87,6 +93,33 @@ public class MainActivity extends Activity {
 					this.result=(TextView) findViewById(R.id.result);
 					this.DistanceText=(TextView) findViewById(R.id.DistnaceLimit);
 					 DistanceText.setText("current distnance limit: "+Double.toString(distance));
+						boolean isgpsenabled=lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+						if(isgpsenabled)
+						{
+							 Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+							 if (location != null) {
+					                ll.onLocationChanged(location);
+					                
+					        }
+							 else {
+					                location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
+					                if (location != null) {
+					                	ll.onLocationChanged(location);
+					                }
+					                else
+					                {
+					             	//location.setLatitude(34);
+				                	//location.setLongitude(32);
+					                //ll.onLocationChanged(location);
+					                	
+					                }
+									Criteria hdCrit = new Criteria();
+									 
+									hdCrit.setAccuracy(Criteria.ACCURACY_COARSE);
+
+						}
+				}
 				}
 				break;
 			case REQUEST_CODE_EDIT:
@@ -103,23 +136,36 @@ public class MainActivity extends Activity {
 	}
 		class mylocationlistener implements LocationListener{
 
+			
+			
+			
 		@Override
 		public void onLocationChanged(Location location) {
 			if(location !=null)
 			{
-			 
-        	   double pLong= location.getLongitude();
-        	   double pLat = location.getLatitude();
-              double maxpLong=pLong+distance*0.000009,minpLong=pLong-distance*0.000009,maxpLat=pLat+distance*0.000009,minpLat=pLat-distance*0.000009;
+				double Accuracy;
+	        	   DecimalFormat df = new DecimalFormat("#.####################");
+        	    pLong= location.getLongitude();
+        	    pLat = location.getLatitude();
+        	    Accuracy=location.getAccuracy()/1000;
+               MainActivity.this.Accuracy.setText(Double.toString(Accuracy));
+   
+        	 //  pLong=Double.valueOf(df.format(pLong));
+        	  // pLat=Double.valueOf(df.format(pLat));
+        	    double R = 6371;  // earth radius in km
 
-        	   DecimalFormat df = new DecimalFormat("#.######");
+        	    double longitudeD =Math.toDegrees(distance/R/Math.cos(Math.toRadians(pLat)));
+        	   double latitudeD = Math.toDegrees(distance/R);
+              double maxpLong=pLong+distance*0.000009,minpLong=pLong-distance*0.000009,maxpLat=pLat+distance*0.000009,minpLat=pLat-distance*0.000009;
+        	 //  double maxpLong=pLong+longitudeD,minpLong=pLong-longitudeD,maxpLat=pLat+latitudeD,minpLat=pLat-latitudeD;
+               
                textLat.setText(Double.toString(pLat));
                textLong.setText(Double.toString(pLong));
                DistanceText.setText(Double.toString(distance));
                URL url;
 				try {
 				//  url = new URL("http://10.0.0.13/insert.php?lat="+Double.toString(pLat)+"&lon="+Double.toString(pLong)+"&id="+MainActivity.this.username+"&car="+car+"&tv="+tv+"&phone="+phone+"&maxpLat="+Double.toString(maxpLat)+"&minpLat="+Double.toString(minpLat)+"&maxpLong="+Double.toString(maxpLong)+"&minPlong="+Double.toString(minpLong));
-					url = new URL("http://192.168.1.15/insert.php?lat="+Double.toString(pLat)+"&lon="+Double.toString(pLong)+"&id="+MainActivity.this.username+"&car="+car+"&tv="+tv+"&phone="+phone+"&maxpLat="+df.format(maxpLat)+"&minpLat="+df.format(minpLat)+"&maxpLong="+df.format(maxpLong)+"&minpLong="+df.format(minpLong)+"&distance="+Double.toString(MainActivity.this.distance));
+					url = new URL("http://10.0.0.13/insert.php?lat="+Double.toString(pLat)+"&lon="+Double.toString(pLong)+"&id="+MainActivity.this.username+"&car="+car+"&tv="+tv+"&phone="+phone+"&maxpLat="+df.format(maxpLat)+"&minpLat="+df.format(minpLat)+"&maxpLong="+df.format(maxpLong)+"&minpLong="+df.format(minpLong)+"&distance="+Double.toString(MainActivity.this.distance));
 					HTTPConnHThread thread = new HTTPConnHThread("refresh");
 					thread.setUrl(url);
 					thread.start();
@@ -144,27 +190,27 @@ public class MainActivity extends Activity {
 						tv=st.nextToken();
 						if(ttv.equals("btv")&&tv.equals("stv"))
 						{
-							ack=ack+user+"\0"+phonenum+"\0"+tv+"\0"+"\n";
+							ack=ack+user+"\0"+phonenum+"\0"+"sell tv"+"\0"+"\n";
 						}
 						else if(ttv.equals("stv")&&tv.equals("btv"))
 						{
-							ack=ack+user+"\0"+phonenum+"\0"+tv+"\0"+"\n";
+							ack=ack+user+"\0"+phonenum+"\0"+"buy tv"+"\0"+"\n";
 						}
 						if(tcar.equals("bcar")&&car.equals("scar"))
 						{
-							ack=ack+user+"\0"+phonenum+"\0"+car+"\n";
+							ack=ack+user+"\0"+phonenum+"\0"+"sell car"+"\n";
 						}
 						else if(tcar.equals("scar")&&car.equals("bcar"))
 						{
-							ack=ack+user+"\0"+phonenum+"\0"+car+"\0"+"\n";
+							ack=ack+user+"\0"+phonenum+"\0"+"buy car"+"\0"+"\n";
 						}
-						if(ttv.equals("bphone")&&phone.equals("sphone"))
+						if(tphone.equals("bphone")&&phone.equals("sphone"))
 						{
-							ack=ack+user+"\0"+phonenum+" "+phone+"\0"+"\n";
+							ack=ack+user+"\0"+phonenum+" "+"sell phone"+"\0"+"\n";
 						}
 						else if(tphone.equals("sphone")&&phone.equals("bphone"))
 						{
-							ack=ack+user+"\0"+phonenum+"\0"+phone+"\0"+"\n";
+							ack=ack+user+"\0"+phonenum+"\0"+"buy phone"+"\0"+"\n";
 						}
 						
 					}
@@ -182,6 +228,7 @@ public class MainActivity extends Activity {
 			}
            
 		}
+
 
 		@Override
 		public void onProviderDisabled(String provider) {
