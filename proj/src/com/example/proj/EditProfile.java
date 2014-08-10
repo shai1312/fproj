@@ -1,16 +1,21 @@
 package com.example.proj;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.ToggleButton;
 
 public class EditProfile extends Activity {
@@ -22,51 +27,69 @@ public class EditProfile extends Activity {
 	private Button finish;
     private EditText distance;
 	private String car,tv,phone;
+	private Spinner BuyOrSale,Category,Sub_Category;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_profile);
 		//catagory=(ExpandableListView) findViewById(R.id.catagory);
-        choose=(RadioGroup) findViewById(R.id.buy_sale_select);
+ /*       choose=(RadioGroup) findViewById(R.id.buy_sale_select);
         carb = (ToggleButton) findViewById(R.id.toggleCarB);
         cars = (ToggleButton) findViewById(R.id.ToggleCarS);
         tvb=(ToggleButton) findViewById(R.id.toggleTvB);
         tvs=(ToggleButton) findViewById(R.id.ToggleTvS);
         phoneb=(ToggleButton) findViewById(R.id.togglePhoneB);
-        phones=(ToggleButton) findViewById(R.id.TogglePhones);
+        phones=(ToggleButton) findViewById(R.id.TogglePhones);*/
         finish=(Button) findViewById(R.id.finish); 
        tv=getIntent().getStringExtra("tv");
        car=getIntent().getStringExtra("car");
        phone=getIntent().getStringExtra("phone");
        distance=(EditText) findViewById(R.id.DistanceText);
+       BuyOrSale=(Spinner) findViewById(R.id.BuyOrSale);
+       Category=(Spinner) findViewById(R.id.Category);
+       Sub_Category=(Spinner) findViewById(R.id.Sub_Category);
+       List<String> list = new ArrayList<String>();
+       list.add("Buy");
+       list.add("sale");
+	   ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,list);
+	   dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+       BuyOrSale.setAdapter(dataAdapter);
       
       
        if(tv.equals("btv"))
        {
-    	tvb.setChecked(true);
+    	//tvb.setChecked(true);
     	
        }
        else if(tv.equals("stv"))
        {
-    	  tvs.setChecked(true); 
+    	  //tvs.setChecked(true); 
        }
        if(car.equals("bcar"))
        {
-    	 carb.setChecked(true);
+    	 //carb.setChecked(true);
        }
        else if(car.equals("scar"))
        {
-    	  cars.setChecked(true); 
+    	//  cars.setChecked(true); 
        }
        if(phone.equals("bphone"))
        {
-    	 phoneb.setChecked(true);
+    	// phoneb.setChecked(true);
        }
        else if(phone.equals("sphone"))
        {
-    	  phones.setChecked(true); 
+    	  //phones.setChecked(true); 
        }
-       
+       BuyOrSale.setOnClickListener((new View.OnClickListener() {
+
+		@Override
+		public void onClick(View arg0) {
+			// TODO Auto-generated method stub
+			
+			
+		}
+		}));
        finish.setOnClickListener(new View.OnClickListener() {
  			public void onClick(View arg0) {
  				Intent data=new Intent();
