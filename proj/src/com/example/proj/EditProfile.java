@@ -6,8 +6,11 @@ import java.util.List;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -16,6 +19,7 @@ import android.widget.ExpandableListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 public class EditProfile extends Activity {
@@ -49,6 +53,7 @@ public class EditProfile extends Activity {
        Category=(Spinner) findViewById(R.id.Category);
        Sub_Category=(Spinner) findViewById(R.id.Sub_Category);
        List<String> list = new ArrayList<String>();
+       list.add("Choose buy or Sale");
        list.add("Buy");
        list.add("sale");
 	   ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,list);
@@ -81,16 +86,17 @@ public class EditProfile extends Activity {
        {
     	  //phones.setChecked(true); 
        }
-       BuyOrSale.setOnClickListener((new View.OnClickListener() {
-
-		@Override
-		public void onClick(View arg0) {
-			// TODO Auto-generated method stub
-			
-			
-		}
-		}));
-       finish.setOnClickListener(new View.OnClickListener() {
+       BuyOrSale.setOnItemSelectedListener(new OnItemSelectedListener() {
+    	    public void onItemSelected(AdapterView<?> arg0, View arg1,
+    	            int arg2, long arg3) {
+    	        String ans=(String)BuyOrSale.getSelectedItem();
+    	        Toast.makeText(EditProfile.this, ans,  Toast.LENGTH_LONG).show();
+    	    }
+    	    public void onNothingSelected(AdapterView<?> arg0) {
+    	      
+    	    }
+    	}); 
+         finish.setOnClickListener(new View.OnClickListener() {
  			public void onClick(View arg0) {
  				Intent data=new Intent();
  				if(carb.isChecked())
